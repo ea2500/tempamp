@@ -11,13 +11,15 @@ User.create!(name:  "jim",
              password:              "jimmish",
              password_confirmation: "jimmish",
              image_url: "JimsLabFace.jpg",
-             admin: true)
+             admin: true,
+             confirmed_at: Time.zone.now)
 User.create!(name:  "tim",
              email: "tim@tim.com",
              password:              "timmish",
              password_confirmation: "timmish",
              image_url: "ab.jpg",
-             admin: true)
+             admin: true,
+             confirmed_at: Time.zone.now)
 
 user_index=(1..13).to_a.shuffle
 user_index.each do |n|
@@ -29,7 +31,7 @@ user_index.each do |n|
                   password_confirmation: 'xxxxxx' ,
                   image_url: Faker::Avatar.image,
                   # image_url: "face"+rand(1..10).to_s+".JPG",
-                  admin: false)
+                  confirmed_at: Time.zone.now)
   (rand(10)+0).times do
     user.items.create(name: Faker::Commerce.product_name ,
                       price: Faker::Commerce.price ,
