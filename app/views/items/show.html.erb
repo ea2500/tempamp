@@ -1,0 +1,33 @@
+
+<%= image_tag(@item.image_url, class: "show-image") %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<% if user_signed_in? and (current_user==@item.user or current_user.admin?) %>
+  <strong><%= "This is one of your items" if current_user==@item.user %></strong> <br>
+  <%= link_to "edit", edit_item_path(@item) %> <br>
+  <%= link_to "delete", item_path(@item), method: :delete  %> <br>
+<% end %>
+<%= link_to 'All Items List', items_path %>
+
+
+<p>
+  <strong>Owner:</strong>
+  <%= @item.user.name %> <br>
+  <%= image_tag @item.user.image_url, class: 'user-image' %> <br>
+  <%= link_to 'Items from this user', owner_items_path(owner: @item.user) %>
+</p>
+

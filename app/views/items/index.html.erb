@@ -1,0 +1,38 @@
+
+<%= link_to 'Add new Item', new_item_path %>
+
+
+<%= will_paginate @items, class: "pagin" %>
+
+<table>
+
+  <tbody>
+    <% @items.each do |item| %>
+  
+      <tr class="<%= cycle('line-odd','line-even') %>">
+        <% if user_signed_in? and current_user == item.user %>
+          <tr class='line-user'>
+        <% end %>
+        <td class='img-cell'> <%= image_tag item.image_url, class: "catalog-image" %></td>
+        <td><strong><%= item.name %></strong><br/>
+          <%= truncate(item.description, length: 200) %><br/>
+          <strong><%= number_to_currency(item.price) %> </strong><%= link_to "more details", item_path(item) %>
+        </td>
+        <td class='img-cell'>
+          <strong>Owner</strong>
+          <%= image_tag item.user.image_url, class: "user-image" %> <br>
+          <%= link_to item.user.name, owner_items_url(owner: item.user) %>
+        </td>
+        <% if user_signed_in? and current_user.admin? %>
+          <td>
+            <%= link_to "edit", edit_item_path(item) %> <br>
+            <%= link_to "delete", item_path(item), method: :delete  %> <br>
+          </td>
+        <% end %>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @items, class: "pagin" %>

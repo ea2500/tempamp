@@ -1,0 +1,88 @@
+<!-- <h2>Edit <%= @user.name %></h2>
+
+<%= form_tag  update_user_path(id: @user) do %>
+
+  <div class="field">
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, params[:name] %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= email_field_tag :email, params[:email] %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :image_url %><br>
+    <%= text_field_tag :image_url, params[:image_url] %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :password %> <br />
+    <%= password_field_tag :password, params[:pasword] %>
+  </div>
+
+  <div class="field">
+    <%= label_tag :password_confirmation %><br />
+    <%= password_field_tag :password_confirmation, params[:password_confirmation] %>
+  </div>
+
+  <div class="field">
+    <%= check_box_tag :admin, params[:admin] %>
+    <%= label_tag :admin, 'make this user admin?' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Update" %>
+  </div>
+<% end %>
+ -->
+
+
+
+<h2>Edit <%= @user.name %></h2>
+
+<%= form_for @user, as: :user, url: update_user_path(id: @user), method: :post do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url, autofocus: true, placeholder: "optional" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %> <br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :admin %>
+    <%= f.label :admin, 'make this user admin?' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+

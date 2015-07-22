@@ -1,0 +1,17 @@
+<%= button_to "Sign up and try the site!", new_user_registration_path, method: :get, class: 'button-signup' %>
+<h1>Welcome to Template App </h1>
+<p> This is a template for a simple model depicted in below figure:</p>
+<%= image_tag "model1.jpg", class: 'model' %> <br>
+User features of this template is implemented by using rails gem "devise".
+
+<h3>Features</h3>
+<ul> 
+  <li> <strong> Users </strong> Only signed up users of the site can advertise and manage their items. Once they logged in, they will be able to add new items, edit and delete them since they have ownership of the items they posted; but they can not edit or delete the other items that they do not own (i.e. items that someone else posted to the site). User can also delete their own accounts if they want to do so. </li>
+  <li> <strong> Administrators </strong> As super users, admin users have more privileges. Once they logged in 1) They can see all the users and manage them (delete/edit) 2) They can see all the products and manage them (delete/edit) 3) They can see and edit other admins and they can delete or edit them. 4) Minumum number of admins is one. The last admin can not be deleted. </li>
+  <li> <strong> Remembering the computer </strong> If chosen, the site remembers the computer for easy login by bypassing the login entry form. It remembers the user on the next site visit when the browser is closed by the user. When logged out the feature resets, meaning user has to login in next visit. </li>
+  <li> <strong> Reset password feauture </strong> Forgetten password can be reset through email. </li>
+</ul>
+
+
+<%= button_to "Sign up now!", new_user_registration_path, method: :get, class: 'button-signup' %>
+
