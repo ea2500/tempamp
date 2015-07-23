@@ -1,5 +1,5 @@
 class ManageUsersController < ApplicationController
-	before_action :bounce_incorrect_user
+	before_action :bounce_incorrect_user, only: [:destroy, :edit, :update]
 	before_action :set_user, only: [:edit, :destroy, :update]
 
   def index
