@@ -30,5 +30,5 @@
 
 <p></p>
 <% User.all.each do |user| %>
-  <%= user.email %><br>
+  <%= user.email %> | <%= user.items.count %><br>
 <% end %>

@@ -1,8 +1,11 @@
 
 <p><%= link_to 'Add new item', new_item_path if @owner == current_user %></p><br>
 
- <%= image_tag @owner.image_url, class: "user-image" %>
-<h3>Listing Items from user "<%= @owner.name %>"</h3>
+<h3> <%= image_tag @owner.image_url, class: "user-image" %>
+Listing Items from user "<%= @owner.name %>"</h3>
+
+<%= "no items posted" if @items.empty? %>
+
 <%= will_paginate @items, class: "pagin" %>
 
 <table>
