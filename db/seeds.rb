@@ -6,14 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name:  "jim",
+User.create!(name:  "Jim Admin",
              email: "jim@jim.com",
              password:              "jimmish",
              password_confirmation: "jimmish",
              image_url: "JimsLabFace.jpg",
              admin: true,
              confirmed_at: Time.zone.now)
-User.create!(name:  "tim",
+User.create!(name:  "Tim Admin",
              email: "tim@tim.com",
              password:              "timmish",
              password_confirmation: "timmish",
@@ -24,11 +24,11 @@ User.create!(name:  "tim",
 user_index=(1..13).to_a.shuffle
 user_index.each do |n|
   name  = Faker::Name.name
-  email = "xxx#{n+1}@xxx.xxx"
-  user=User.create(name:  name ,
+  email = Faker::Internet.email
+  user=User.create(name: name ,
                   email: email ,
-                  password:              'xxxxxx' ,
-                  password_confirmation: 'xxxxxx' ,
+                  password:              'password' ,
+                  password_confirmation: 'password' ,
                   image_url: Faker::Avatar.image,
                   # image_url: "face"+rand(1..10).to_s+".JPG",
                   confirmed_at: Time.zone.now)

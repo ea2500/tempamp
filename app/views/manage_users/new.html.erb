@@ -1,7 +1,7 @@
 
-<h2>Edit User Account of "<%= @user.name %>" </h2>
+<h2>New User Account </h2>
 
-<%= form_for @user, as: :user, url: edit_user_path(id: @user), method: :put do |f| %>
+<%= form_for @user, as: :user, url: new_user_path(id: @user), method: :post do |f| %>
   
   <div class="field">
     <%= f.label :name %><br />
@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i> <br />
+    <%= f.label :password %> <br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
@@ -27,7 +27,6 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
 
   <div class="field">
     <%= f.check_box :admin %>

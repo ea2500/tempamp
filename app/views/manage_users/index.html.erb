@@ -1,5 +1,9 @@
 
-<%#= link_to "Add new user", new_user_registration_path %> <br>
+<% if user_signed_in? and current_user.admin? %> 
+  <%= link_to "Add new user", new_user_url %> <br>
+<% elsif not user_signed_in? %>
+  <%= button_to "Sign up and try the site!", new_user_registration_path, method: :get, class: 'button-signup' %>
+<% end %>
 
 <h3>Listing All Users</h3>
 
@@ -11,24 +15,33 @@
       <th> user image </th>
       <th> Name + Link to Items </th>
       <th> # items posted </th>
-      <th> admin? </th>
-      <th> </th>
+      <% if user_signed_in? and current_user.admin? %>
+        <th> admin? </th>
+        <th> manage </th>
+        <th> email </th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
-  
-      <tr class="<%= cycle('line-odd','line-even') %>">
+      <% if user.admin? %>
+        <tr class="line-admin">
+      <% else %>
+        <tr class="<%= cycle('line-odd','line-even') %>">
+      <% end %>
         <td class='img-cell'> <%= image_tag user.image_url, class: "user-image" %></td>
         <td><%= link_to user.name, owner_items_url(owner: user) %></td>
         <td><%= user.items.count %></td>
-        <td><%= user.admin? %></td>
           <% if user_signed_in? and current_user.admin? %>
-	          <td>
-	            <%#= link_to "edit", edit_user_path(id: user) %> 
+            <td><%= user.admin? %></td>
+	          <td class='line-admin'>
+	            <%= link_to "edit", edit_user_path(id: user) %> <br>
 	            <%= link_to "delete", delete_user_path(id: user), method: :delete, data: {confirm: "Are you sure?"} %>
 	          </td>
+            <td>
+              <%= user.email %> 
+            </td>
 	        <% end %>
         </td>
       </tr>

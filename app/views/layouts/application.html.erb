@@ -16,7 +16,7 @@
 			<%= link_to "All Users", users_path, id:'cart-logo' %>
 			<nav>
 				<ul class="nav navbar-nav navbar-right">
-					<% if current_user %>
+					<% if user_signed_in? %>
 						<li><%= link_to "My Account", edit_user_registration_path %></li>
 						<% if not current_user.admin? %>
 							<li><%= link_to "My Items", owner_items_url(owner: current_user) %></li>
@@ -35,7 +35,7 @@
 	
 		<div class="container">
 			<div id='info-bar'> 
-				<%= [current_user.id, current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
+				<%= [current_user.name, current_user.admin? ? 'admin' : 'user'] if current_user %>
 
 			<% flash.each do |name, message| %>
 				<% message = "You are already logged in. Log out first please..." if message=="You are already signed in." %>
@@ -54,7 +54,6 @@
 	</header>
 	
 	<div class="container">
-		
 
 		<%= yield %>
 

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   
-  delete 'delete_user' => 'manage_users#destroy'
-  post 'update_user' => 'manage_users#update'
-  get 'edit_user' => 'manage_users#edit'
+  delete '/delete_user' => 'manage_users#destroy'
+  
+  post '/new_user' => 'manage_users#create'
+  get '/new_user' => 'manage_users#new'
+  
+
+  get '/edit_user' => 'manage_users#edit'
+  put '/edit_user' => 'manage_users#update'
 
   get 'users' => 'manage_users#index'
 
