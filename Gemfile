@@ -62,3 +62,5 @@ group :production do
 end
 
 gem 'devise'
+gem 'omniauth', '~> 1.2.2'
+gem "omniauth-google-oauth2"
