@@ -70,7 +70,7 @@ Rails.application.configure do
     domain:               "domain.of.sender.net",
     authentication:       "plain",
     user_name:            "ebazaar100",
-    password:             "ebaZaar123",
+    password:             "xxxxxxxxxx",
     enable_starttls_auto: true
   } 
   config.action_mailer.default_url_options = {host: "tempamp.herokuapp.com"}  
