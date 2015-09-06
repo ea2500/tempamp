@@ -8,15 +8,15 @@
 
 User.create!(name:  "Jim Admin",
              email: "jim@jim.com",
-             password:              "jimmish",
-             password_confirmation: "jimmish",
+             password:              "xxxxxx",
+             password_confirmation: "xxxxxx",
              image_url: "JimsLabFace.jpg",
              admin: true,
              confirmed_at: Time.zone.now)
 User.create!(name:  "Tim Admin",
              email: "tim@tim.com",
-             password:              "timmish",
-             password_confirmation: "timmish",
+             password:              "xxxxxx",
+             password_confirmation: "xxxxxx",
              image_url: "ab.jpg",
              admin: true,
              confirmed_at: Time.zone.now)
